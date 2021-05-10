@@ -2,6 +2,25 @@ import "../static/assets/css/fonts.css";
 import "../static/assets/css/style.css";
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
+import ScrollMagic from "scrollmagic";
+import { TweenMax, Linear, TimelineMax } from "gsap";
+import { ScrollMagicPluginGsap } from "scrollmagic-plugin-gsap";
+
+ScrollMagicPluginGsap(ScrollMagic, TweenMax, TimelineMax);
+
+var scale_tween = TweenMax.to("#el", 1, {
+  transform: "scale(0.10)",
+  ease: Linear.easeIn,
+});
+var controller = new ScrollMagic.Controller();
+
+// Scale Scene
+var scale_scene = new ScrollMagic.Scene({
+  triggerElement: "#el",
+}).setTween(scale_tween);
+
+controller.addScene([scale_scene]);
+
 // import * as dat from 'dat.gui'
 
 // // Debug

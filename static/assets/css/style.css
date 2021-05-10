@@ -85,5 +85,13 @@ div.centered {
 }
 
 /* 1st Slide */
+#slide2 {
+  width: 100vw;
+  height: 300vh;
+  position: relative;
+}
 
+.transition {
+  transform: translateY(-100px);
+}
 /* Navbar style */
