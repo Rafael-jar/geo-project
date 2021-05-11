@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Geography Project</title>
-
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
     <!--<canvas class="webgl"></canvas>-->
@@ -32,14 +32,25 @@
 
     <!-- FIRST SLIDE -->
     <section id="slide2">
-        <div id="el" style="">
-            <div class="centerer">
-                <div class="content centered">
-                    <h1 class="principal-text light-medium-text light-text">Eyjafjallajökull 2010</h1>
-                    <p class="secondary-text medium light-text centered">Rafael Silva Mendes</p>
+        <div class="div" id="earthanim"    style="height: 200vh;">
+            <div id="triggeropacity" style="top: 20vh; position:absolute;"></div>
+            <div id="triggerearth" style="top: 50vh; position:absolute;"></div>
+            <div id="triggerearthmoove" style="top: 60vh; position:absolute;"></div>
+            <div class="section" id="section1slide2" style="opacity: 0;">
+                <div class="el">
+                    <div id="earth" style="width: 100%; height: 100vh; "></div>
                 </div>
             </div>
         </div>
+        <div class="frame" style="height: 500vh;">
+            I'm the frame
+        </div>
     </section>
+
+
+    <!-- <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script> -->
 </body>
 </html>

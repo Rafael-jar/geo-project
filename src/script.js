@@ -1,5 +1,6 @@
 import "../static/assets/css/fonts.css";
 import "../static/assets/css/style.css";
+import "../static/assets/css/grid.css";
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import ScrollMagic from "scrollmagic";
@@ -8,120 +9,156 @@ import { ScrollMagicPluginGsap } from "scrollmagic-plugin-gsap";
 
 ScrollMagicPluginGsap(ScrollMagic, TweenMax, TimelineMax);
 
-var scale_tween = TweenMax.to("#el", 1, {
-  transform: "scale(0.10)",
-  ease: Linear.easeIn,
+var scale_tween = TweenMax.to("#intro", 1, {
+  ease: Linear.easeNone,
+  scale: 2,
+  opacity: 0,
 });
 var controller = new ScrollMagic.Controller();
 
 // Scale Scene
 var scale_scene = new ScrollMagic.Scene({
-  triggerElement: "#el",
+  triggerElement: "#intro",
+  triggerHook: 0,
+  duration: "100%",
 }).setTween(scale_tween);
 
-controller.addScene([scale_scene]);
+var slide2section1 = TweenMax.to("#section1slide2", 1, {
+  ease: Linear.easeNone,
+  opacity: 1,
+});
+var controller = new ScrollMagic.Controller();
 
-// import * as dat from 'dat.gui'
+// Scale Scene
+var scenslide2section1 = new ScrollMagic.Scene({
+  triggerElement: "#triggerearth",
+}).setPin("#section1slide2 .el");
 
-// // Debug
-// const gui = new dat.GUI()
+var scenslide2section1op = new ScrollMagic.Scene({
+  triggerElement: "#triggeropacity",
+}).setTween(slide2section1);
 
-// // Canvas
-// const canvas = document.querySelector("canvas.webgl");
+var slide2sec1 = TweenMax.to("html", 1, {
+  ease: Linear.easeNone,
+  backgroundColor: "#3256a8",
+});
+var scenslide2sec1 = new ScrollMagic.Scene({
+  triggerElement: "#section1slide2",
+}).setTween(slide2sec1);
 
-// // Scene
-// const scene = new THREE.Scene();
+// ----- THE EARTH ------
 
-// // Objects
-// const geometry = new THREE.TorusGeometry(0.7, 0.2, 16, 100);
+var width = document.getElementById("earth").offsetWidth,
+  height = document.getElementById("earth").offsetHeight;
 
-// // Materials
+var webglEl = document.getElementById("earth");
 
-// const material = new THREE.MeshBasicMaterial();
-// material.color = new THREE.Color(0xff0000);
+// Earth params
+var radius = 0.5,
+  segments = 32,
+  rotation = 6;
 
-// // Mesh
-// const sphere = new THREE.Mesh(geometry, material);
-// scene.add(sphere);
+var scene = new THREE.Scene();
 
-// // Lights
+var camera = new THREE.PerspectiveCamera(45, width / height, 0.01, 1000);
+camera.position.z = 1.5;
 
-// const pointLight = new THREE.PointLight(0xffffff, 0.1);
-// pointLight.position.x = 2;
-// pointLight.position.y = 3;
-// pointLight.position.z = 4;
-// scene.add(pointLight);
+var renderer = new THREE.WebGLRenderer({ alpha: true });
+renderer.setSize(width, height);
+scene.add(new THREE.AmbientLight(0x333333));
 
-// /**
-//  * Sizes
-//  */
-// const sizes = {
-//   width: window.innerWidth,
-//   height: window.innerHeight,
-// };
+var light = new THREE.DirectionalLight(0xffffff, 1);
+light.position.set(0, 0, 1.5);
+scene.add(light);
 
-// window.addEventListener("resize", () => {
-//   // Update sizes
-//   sizes.width = window.innerWidth;
-//   sizes.height = window.innerHeight;
+var sphere = createSphere(radius, segments);
+sphere.rotation.y = rotation;
+scene.add(sphere);
 
-//   // Update camera
-//   camera.aspect = sizes.width / sizes.height;
-//   camera.updateProjectionMatrix();
+var clouds = createClouds(radius, segments);
+clouds.rotation.y = rotation;
+scene.add(clouds);
 
-//   // Update renderer
-//   renderer.setSize(sizes.width, sizes.height);
-//   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-// });
+webglEl.appendChild(renderer.domElement);
 
-// /**
-//  * Camera
-//  */
-// // Base camera
-// const camera = new THREE.PerspectiveCamera(
-//   75,
-//   sizes.width / sizes.height,
-//   0.1,
-//   100
-// );
-// camera.position.x = 0;
-// camera.position.y = 0;
-// camera.position.z = 2;
-// scene.add(camera);
+render();
 
-// // Controls
-// // const controls = new OrbitControls(camera, canvas)
-// // controls.enableDamping = true
+function render() {
+  clouds.rotation.y += 0.00005;
+  requestAnimationFrame(render);
+  renderer.render(scene, camera);
+}
 
-// /**
-//  * Renderer
-//  */
-// const renderer = new THREE.WebGLRenderer({
-//   canvas: canvas,
-// });
-// renderer.setSize(sizes.width, sizes.height);
-// renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+function createSphere(radius, segments) {
+  return new THREE.Mesh(
+    new THREE.SphereGeometry(radius, segments, segments),
+    new THREE.MeshPhongMaterial({
+      map: THREE.ImageUtils.loadTexture("./assets/images/8081_earthmap10k.jpg"),
+      bumpMap: THREE.ImageUtils.loadTexture(
+        "../assets/images/elev_bump_4k.jpg"
+      ),
+      bumpScale: 0.005,
+      specularMap: THREE.ImageUtils.loadTexture("./assets/images/water_4k.png"),
+      specular: new THREE.Color("grey"),
+    })
+  );
+}
 
-// /**
-//  * Animate
-//  */
+function createClouds(radius, segments) {
+  return new THREE.Mesh(
+    new THREE.SphereGeometry(radius + 0.003, segments, segments),
+    new THREE.MeshPhongMaterial({
+      map: THREE.ImageUtils.loadTexture("./assets/images/fair_clouds_4k.png"),
+      transparent: true,
+    })
+  );
+}
 
-// const clock = new THREE.Clock();
+var cameramovement = new TweenMax.to(camera.position, {
+  x: 0.195,
+  y: 0.55,
+  z: 0.135,
+  onUpdate: function () {
+    camera.lookAt(sphere.position);
+  },
+});
 
-// const tick = () => {
-//   const elapsedTime = clock.getElapsedTime();
+var cam_moove = new ScrollMagic.Scene({
+  triggerElement: "#triggerearthmoove",
+  triggerHook: 0,
+  duration: "100%",
+}).setTween(cameramovement);
 
-//   // Update objects
-//   sphere.rotation.y = 0.5 * elapsedTime;
+var settinginframe = TweenMax.to(".el", 1, {
+  ease: Linear.easeNone,
+  scale: 0.3,
+  top: "30%",
+  left: "30%",
+});
 
-//   // Update Orbital Controls
-//   // controls.update()
+var settinginframf = new ScrollMagic.Scene({
+  triggerElement: ".frame",
+  triggerHook: 0,
+  duration: "100%",
+})
+  .setTween(settinginframe)
+  .setPin(".frame");
 
-//   // Render
-//   renderer.render(scene, camera);
+controller.addScene([
+  scale_scene,
+  scenslide2section1,
+  scenslide2sec1,
+  cam_moove,
+  scenslide2section1op,
+  settinginframf,
+]);
 
-//   // Call tick again on the next frame
-//   window.requestAnimationFrame(tick);
-// };
-
-// tick();
+function convertLatLonToVec3(lat, lon) {
+  lat = (lat * Math.PI) / 180.0;
+  lon = (-lon * Math.PI) / 180.0;
+  return new THREE.Vector3(
+    Math.cos(lat) * Math.cos(lon),
+    Math.sin(lat),
+    Math.cos(lat) * Math.sin(lon)
+  );
+}

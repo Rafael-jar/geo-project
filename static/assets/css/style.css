@@ -94,4 +94,9 @@ div.centered {
 .transition {
   transform: translateY(-100px);
 }
+div.section {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
 /* Navbar style */
