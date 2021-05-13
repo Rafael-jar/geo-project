@@ -3,9 +3,12 @@ import "../static/assets/css/style.css";
 import "../static/assets/css/grid.css";
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
+import $ from "jquery";
 import ScrollMagic from "scrollmagic";
 import { TweenMax, Linear, TimelineMax } from "gsap";
 import { ScrollMagicPluginGsap } from "scrollmagic-plugin-gsap";
+
+var cycling = false;
 
 ScrollMagicPluginGsap(ScrollMagic, TweenMax, TimelineMax);
 
@@ -32,6 +35,7 @@ var controller = new ScrollMagic.Controller();
 // Scale Scene
 var scenslide2section1 = new ScrollMagic.Scene({
   triggerElement: "#triggerearth",
+  duration: "600%",
 }).setPin("#section1slide2 .el");
 
 var scenslide2section1op = new ScrollMagic.Scene({
@@ -129,21 +133,36 @@ var cam_moove = new ScrollMagic.Scene({
   duration: "100%",
 }).setTween(cameramovement);
 
-var settinginframe = TweenMax.to(".el", 1, {
+var settinginframe = TweenMax.to("#section1slide2 #earth canvas", 1, {
   ease: Linear.easeNone,
-  scale: 0.3,
-  top: "30%",
-  left: "30%",
+  width: "50vw",
+  height: "50vh",
+  onComplete: function () {
+    $("#section1slide2 .el").addClass("section-centered");
+    $("#section1slide2 .el .fullcard").addClass("center-fullcard");
+    $("#section1slide2 .el .fullcard").css("background-color", "white");
+    $("#section1slide2 #earth").css("width", "auto");
+    $("#section1slide2 #earth").css("height", "auto");
+    $("#section1slide2 #earth canvas").css(
+      "border-radius",
+      "15px 0px 0px 15px"
+    );
+  },
+  onReverseComplete: function () {
+    $("#section1slide2 .el .fullcard").removeClass("center-fullcard");
+    $("#section1slide2 .el").removeClass("section-centered");
+    $("#section1slide2 #earth").css("width", "100vw");
+    $("#section1slide2 #earth").css("height", "100vh");
+    $("#section1slide2 #earth canvas").css("border-radius", "0px");
+    $("#section1slide2 .el .fullcard").css("background-color", "transparent");
+  },
 });
 
 var settinginframf = new ScrollMagic.Scene({
-  triggerElement: ".frame",
+  triggerElement: "#earthend",
   triggerHook: 0,
   duration: "100%",
-})
-  .setTween(settinginframe)
-  .setPin(".frame");
-
+}).setTween(settinginframe);
 controller.addScene([
   scale_scene,
   scenslide2section1,
@@ -153,12 +172,117 @@ controller.addScene([
   settinginframf,
 ]);
 
-function convertLatLonToVec3(lat, lon) {
-  lat = (lat * Math.PI) / 180.0;
-  lon = (-lon * Math.PI) / 180.0;
-  return new THREE.Vector3(
-    Math.cos(lat) * Math.cos(lon),
-    Math.sin(lat),
-    Math.cos(lat) * Math.sin(lon)
-  );
-}
+/* Volcano */
+
+var scenslide2section1 = new ScrollMagic.Scene({
+  triggerElement: "#triggervolcano",
+  duration: "300%",
+})
+  .setPin("#section1slide3 .el")
+  // .setTween(
+  //   new TweenMax.to("#slide3", 1, {
+  //     onComplete: function () {
+  //       $("#slide3").css("transform", "translateY(-200vh)");
+  //     },
+  //   })
+  // )
+  .addTo(controller);
+var volcanochange1 = new ScrollMagic.Scene({
+  triggerElement: "#triggervolcanostage2",
+  duration: "1vh",
+})
+  .setTween(
+    new TweenMax.to("#volcano", 1, {
+      onComplete: function () {
+        $("#volcano img").attr("src", "./assets/images/volcanostages/zoom.PNG");
+      },
+      onReverseComplete: function () {
+        $("#volcano img").attr(
+          "src",
+          "./assets/images/volcanostages/gmaps.PNG"
+        );
+      },
+    })
+  )
+  .addTo(controller);
+
+var volcanochange2 = new ScrollMagic.Scene({
+  triggerElement: "#triggervolcanostage3",
+  duration: "1vh",
+})
+  .setTween(
+    new TweenMax.to("#volcano", 1, {
+      onComplete: function () {
+        $("#volcano img").attr(
+          "src",
+          "./assets/images/volcanostages/volcan.JPG"
+        );
+      },
+      onReverseComplete: function () {
+        $("#volcano img").attr("src", "./assets/images/volcanostages/zoom.PNG");
+      },
+    })
+  )
+  .addTo(controller);
+
+/* Volcano 2.0*/
+
+var volcano2Pin = new ScrollMagic.Scene({
+  triggerElement: "#trigger-volcano",
+})
+  .setPin(".slide3")
+  .addTo(controller);
+
+var volcanoplatemoove = new ScrollMagic.Scene({
+  triggerElement: "#triggerplates",
+})
+  .setTween(
+    new TweenMax.to("#triggerplates", 1, {
+      onStart: function () {
+        cycling = true;
+        const interval = setInterval(function () {
+          if (cycling) {
+            if ($("#plate-left").hasClass("movingRight")) {
+              $("#plate-left").addClass("movingLeft");
+              $("#plate-left").removeClass("movingRight");
+            } else {
+              $("#plate-left").addClass("movingRight");
+              $("#plate-left").removeClass("movingLeft");
+            }
+
+            if ($("#plate-right").hasClass("movingLeft")) {
+              $("#plate-right").addClass("movingRight");
+              $("#plate-right").removeClass("movingLeft");
+            } else {
+              $("#plate-right").addClass("movingLeft");
+              $("#plate-right").removeClass("movingRight");
+            }
+          } else {
+            $("#plate-right").removeClass("movingRight");
+            $("#plate-right").removeClass("movingLeft");
+
+            $("#plate-left").removeClass("movingRight");
+            $("#plate-left").removeClass("movingLeft");
+            clearInterval(interval);
+          }
+        }, 1000);
+      },
+      onReverseComplete: function () {
+        cycling = false;
+      },
+    })
+  )
+  .addTo(controller);
+
+var volcanoplatemoove = new ScrollMagic.Scene({
+  triggerElement: "#triggerlavafilling",
+  triggerHook: 0,
+  duration: "100%",
+  reverse: true,
+})
+  .setTween(
+    new TweenMax.to("#volcano-lava", 2, {
+      marginTop: "0%",
+    })
+  )
+  .addTo(controller);

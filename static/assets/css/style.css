@@ -99,4 +99,55 @@ div.section {
   height: 100vh;
   position: relative;
 }
+
+.section-centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100%;
+}
+
+.card .title {
+  transition: color 0.3s ease;
+  font-size: 1.125rem;
+  line-height: 1.4;
+  color: #121212;
+  font-weight: 700;
+  margin: 0 0 0.5rem 0;
+}
+
+.card .date {
+  display: inline-block;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.0625rem;
+  margin: 0 0 0.75rem 0;
+  padding: 0 0 0.25rem 0;
+  border-bottom: 0.125rem solid #ebebeb;
+}
+
+.card {
+  padding: 1.5rem;
+}
+
+.card {
+  width: 500px;
+}
+.center-fullcard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.movingLeft {
+  transform: translateX(calc(-50% + 0px)) !important;
+}
+
+.movingRight {
+  transform: translateX(calc(-50% - 10px)) !important;
+}
 /* Navbar style */
