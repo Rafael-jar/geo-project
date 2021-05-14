@@ -1,0 +1,596 @@
+@import url(https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Butterfly+Kids&display=swap);
+:root {
+  --title: "Roboto", sans-serif;
+  --subtitle: "Raleway", sans-serif;
+  --main-color: #553333;
+  --secondary-color: #cc4422;
+  --thirdly-color: #ff6600;
+  --button-color: #ffff44;
+  --light-text: rgb(194, 194, 194);
+  --text: black;
+}
+
+h1 {
+  color: var(--text);
+  font-size: 5em;
+  line-height: 1.2;
+  text-align: start;
+}
+
+h2 {
+  color: var(--text);
+  line-height: 1.5;
+  font-size: 4em;
+  text-align: start;
+}
+
+h3 {
+  color: var(--text);
+  line-height: 1.5;
+  font-size: 3em;
+  text-align: start;
+}
+
+h4 {
+  color: var(--text);
+  line-height: 1.5;
+  font-size: 2em;
+  text-align: start;
+}
+
+h5 {
+  color: var(--text);
+  line-height: 1.5;
+  font-size: 1em;
+  text-align: start;
+}
+
+h6 {
+  color: var(--text);
+  line-height: 1.5;
+  font-size: 1em;
+  text-align: start;
+}
+
+p {
+  color: var(--text);
+  line-height: 1.5;
+  text-align: start;
+}
+
+p.medium {
+  font-size: 2em;
+}
+
+strong {
+  text-align: start;
+}
+
+a {
+  text-align: start;
+}
+
+a:hover {
+  color: var(--button-color);
+  text-decoration: none;
+}
+
+a.other:hover {
+  color: var(--button-color);
+  text-decoration: none;
+}
+
+a:not([href]):not([tabindex]) {
+  color: inherit;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+.centered {
+  text-align: center;
+}
+
+.principal-text {
+  font-family: var(--title);
+}
+
+.secondary-text {
+  font-family: var(--subtitle);
+}
+
+.bold {
+  font-weight: bold;
+}
+.light-text {
+  font-weight: 200;
+  color: var(--light-text);
+}
+
+.light-medium-text {
+  font-weight: 300;
+}
+
+.medium-text {
+  font-weight: 450;
+}
+
+.strong-text {
+  font-weight: 700;
+}
+
+.principal-color {
+  color: var(--main-color);
+}
+
+.thirdly-color {
+  color: var(--thirdly-color);
+}
+
+.secondary-color {
+  color: var(--secondary-color);
+}
+
+.white-text {
+  color: white;
+}
+
+@media screen and (max-width: 450px) {
+  h1 {
+    font-size: 15vw;
+  }
+  p {
+    font-size: 5vw;
+  }
+  p.medium {
+    font-size: 7.5vw;
+  }
+  h2 {
+    font-size: 12.5vw;
+  }
+  h3 {
+    font-size: 10vw;
+  }
+  h4 {
+    font-size: 7.5vw;
+  }
+  h5 {
+    font-size: 5vw;
+  }
+  h6 {
+    font-size: 2.5vw;
+  }
+}
+
+.kid {
+  font-family: "Butterfly Kids", cursive;
+}
+
+.kidtest {
+  font-family: "Kindergarten", sans-serif;
+}
+
+/* Basic styling*/
+* {
+  margin: 0;
+  padding: 0;
+  transition: all 0.3s ease-in-out;
+}
+
+:root {
+  width: 100%;
+  background-color: white;
+  overflow-x: hidden;
+}
+
+ul {
+  list-style: none;
+}
+a:hover,
+a:active,
+a:focus,
+input:hover,
+input:active,
+input:focus,
+button:hover,
+button:active,
+button:focus {
+  outline: 0;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+/* Introduction */
+#intro {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+#intromp4 {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  filter: blur(5px);
+}
+
+.content {
+  position: absolute;
+  bottom: 0;
+  color: #f1f1f1;
+  width: 100%;
+}
+
+.centerer {
+  position: absolute;
+  left: 50%;
+  top: 45%;
+}
+
+div.centered {
+  position: relative;
+  left: -50%;
+  top: -45%;
+}
+
+.webgl {
+  position: fixed;
+  top: 0;
+  left: 0;
+  outline: none;
+}
+
+#arrow-updown {
+  animation: 1.5s updown infinite alternate;
+}
+
+@keyframes updown {
+  from {
+    transform: translateY(10px);
+  }
+  to {
+    transform: translateY(-10px);
+  }
+}
+
+/* 1st Slide */
+#slide2 {
+  width: 100vw;
+  height: 300vh;
+  position: relative;
+}
+
+.transition {
+  transform: translateY(-100px);
+}
+div.section {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+
+.section-centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100%;
+}
+
+.card .title {
+  transition: color 0.3s ease;
+  font-size: 1.125rem;
+  line-height: 1.4;
+  color: #121212;
+  font-weight: 700;
+  margin: 0 0 0.5rem 0;
+}
+
+.card .date {
+  display: inline-block;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.0625rem;
+  margin: 0 0 0.75rem 0;
+  padding: 0 0 0.25rem 0;
+  border-bottom: 0.125rem solid #ebebeb;
+}
+
+.card {
+  padding: 1.5rem;
+}
+
+.card {
+  width: 500px;
+}
+.center-fullcard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.movingLeft {
+  transform: translateX(calc(-50% + 0px)) !important;
+}
+
+.movingRight {
+  transform: translateX(calc(-50% - 10px)) !important;
+}
+
+.clouds {
+  width: 500px;
+  height: 275px;
+  border-radius: 50%;
+  filter: url(#filter);
+  box-shadow: 400px 400px 60px 0px #fff;
+  position: absolute;
+  top: -320px;
+  left: -320px;
+}
+
+ul {
+  text-align: left;
+  list-style: circle;
+  font-size: 50px;
+}
+
+.journal {
+  width: 200px;
+  height: auto;
+  border: solid 1px white;
+  border-radius: 15px;
+}
+.randomvid {
+  position: absolute;
+  box-shadow: 2px 5px 20px 0px #ffffff;
+  border-radius: 15px;
+}
+/* Loader */
+
+.loader, .warner {
+  position: fixed;
+  z-index: 10000;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+}
+
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+}
+
+/* ROW */
+.row {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-gap: 20px;
+}
+
+.col-xs-12 {
+  grid-column: span 12;
+}
+
+.col-xs-11 {
+  grid-column: span 11;
+}
+
+.col-xs-10 {
+  grid-column: span 10;
+}
+
+.col-xs-9 {
+  grid-column: span 9;
+}
+
+.col-xs-8 {
+  grid-column: span 8;
+}
+
+.col-xs-7 {
+  grid-column: span 7;
+}
+
+.col-xs-6 {
+  grid-column: span 6;
+}
+
+.col-xs-5 {
+  grid-column: span 5;
+}
+
+.col-xs-4 {
+  grid-column: span 4;
+}
+
+.col-xs-3 {
+  grid-column: span 3;
+}
+
+.col-xs-2 {
+  grid-column: span 2;
+}
+
+.col-xs-1 {
+  grid-column: span 1;
+}
+
+@media (min-width: 768px) {
+  .col-sm-12 {
+    grid-column: span 12;
+  }
+
+  .col-sm-11 {
+    grid-column: span 11;
+  }
+
+  .col-sm-10 {
+    grid-column: span 10;
+  }
+
+  .col-sm-9 {
+    grid-column: span 9;
+  }
+
+  .col-sm-8 {
+    grid-column: span 8;
+  }
+
+  .col-sm-7 {
+    grid-column: span 7;
+  }
+
+  .col-sm-6 {
+    grid-column: span 6;
+  }
+
+  .col-sm-5 {
+    grid-column: span 5;
+  }
+
+  .col-sm-4 {
+    grid-column: span 4;
+  }
+
+  .col-sm-3 {
+    grid-column: span 3;
+  }
+
+  .col-sm-2 {
+    grid-column: span 2;
+  }
+
+  .col-sm-1 {
+    grid-column: span 1;
+  }
+}
+
+@media (min-width: 992px) {
+  .col-md-12 {
+    grid-column: span 12;
+  }
+
+  .col-md-11 {
+    grid-column: span 11;
+  }
+
+  .col-md-10 {
+    grid-column: span 10;
+  }
+
+  .col-md-9 {
+    grid-column: span 9;
+  }
+
+  .col-md-8 {
+    grid-column: span 8;
+  }
+
+  .col-md-7 {
+    grid-column: span 7;
+  }
+
+  .col-md-6 {
+    grid-column: span 6;
+  }
+
+  .col-md-5 {
+    grid-column: span 5;
+  }
+
+  .col-md-4 {
+    grid-column: span 4;
+  }
+
+  .col-md-3 {
+    grid-column: span 3;
+  }
+
+  .col-md-2 {
+    grid-column: span 2;
+  }
+
+  .col-md-1 {
+    grid-column: span 1;
+  }
+}
+
+@media (min-width: 1200px) {
+  .col-lg-12 {
+    grid-column: span 12;
+  }
+
+  .col-lg-11 {
+    grid-column: span 11;
+  }
+
+  .col-lg-10 {
+    grid-column: span 10;
+  }
+
+  .col-lg-9 {
+    grid-column: span 9;
+  }
+
+  .col-lg-8 {
+    grid-column: span 8;
+  }
+
+  .col-lg-7 {
+    grid-column: span 7;
+  }
+
+  .col-lg-6 {
+    grid-column: span 6;
+  }
+
+  .col-lg-5 {
+    grid-column: span 5;
+  }
+
+  .col-lg-4 {
+    grid-column: span 4;
+  }
+
+  .col-lg-3 {
+    grid-column: span 3;
+  }
+
+  .col-lg-2 {
+    grid-column: span 2;
+  }
+
+  .col-lg-1 {
+    grid-column: span 1;
+  }
+}
+
+
+/*# sourceMappingURL=main.css.map*/

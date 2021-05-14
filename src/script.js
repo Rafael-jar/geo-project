@@ -229,6 +229,7 @@ var volcanochange2 = new ScrollMagic.Scene({
 
 var volcano2Pin = new ScrollMagic.Scene({
   triggerElement: "#trigger-volcano",
+  duration: "500%",
 })
   .setPin(".slide3")
   .addTo(controller);
@@ -285,4 +286,31 @@ var volcanoplatemoove = new ScrollMagic.Scene({
       marginTop: "0%",
     })
   )
+  .addTo(controller);
+
+var volcanoplatemoove = new ScrollMagic.Scene({
+  triggerElement: "#triggerclouds",
+  triggerHook: 0,
+  duration: "100%",
+  reverse: true,
+})
+  .setTween(
+    new TweenMax.to("#clouds1", 2, {
+      height: "60vh",
+    })
+  )
+  .addTo(controller);
+
+var cardpinner = new ScrollMagic.Scene({
+  triggerElement: "#cardpin",
+  duration: "200%",
+  onComplete: function () {
+    console.log("complete");
+    $("#slide5").css("transform", "translateY(100%)");
+  },
+  onReverseComplete: function () {
+    $("#slide5").css("transform", "translateY(0)");
+  },
+})
+  .setPin("#section4slide1 .el")
   .addTo(controller);

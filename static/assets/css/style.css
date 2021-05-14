@@ -150,4 +150,41 @@ div.section {
 .movingRight {
   transform: translateX(calc(-50% - 10px)) !important;
 }
-/* Navbar style */
+
+.clouds {
+  width: 500px;
+  height: 275px;
+  border-radius: 50%;
+  filter: url(#filter);
+  box-shadow: 400px 400px 60px 0px #fff;
+  position: absolute;
+  top: -320px;
+  left: -320px;
+}
+
+ul {
+  text-align: left;
+  list-style: circle;
+  font-size: 50px;
+}
+
+.journal {
+  width: 200px;
+  height: auto;
+  border: solid 1px white;
+  border-radius: 15px;
+}
+.randomvid {
+  position: absolute;
+  box-shadow: 2px 5px 20px 0px #ffffff;
+  border-radius: 15px;
+}
+/* Loader */
+
+.loader, .warner {
+  position: fixed;
+  z-index: 10000;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+}

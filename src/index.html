@@ -4,10 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Geography Project</title>
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
     <!--<canvas class="webgl"></canvas>-->
+
+
+    <!-- Warning -->
+    <div class="warner">
+        <div class="centerer" style="top: 0;">
+            <div class="centered">
+                <h1 class="principal-text">! Warning !</h1>
+                <h4 class="secondary-text"> You are using a device smaller than 1000 px, the experience may not be adapted to your device. For a better experience try using a bigger device like a computer or a tablet.</h4> 
+                <button style="background-color: black; color: white; border-radius: 15px; border-color: transparent; padding: 15px;" onClick="$('.warner').css('display', 'none');">Dismiss</button>
+            </div>
+           
+        </div>
+    </div>
+
+    <!-- Loading animation -->
+    <div class="loader">
+        <div class="centerer">
+            <div class="centered">
+                <img src="../static/assets/images/loader.gif" alt="">
+            </div>
+        </div>
+    </div>
+
+
     <!-- INTRO -->
     <section id="intro">
         <div class="vid-container">    
@@ -58,7 +81,7 @@
                 <div class="el section-centered" style="height: 100vh;">
                     <div class="fullcard center-fullcard" style="border-radius: 15px; background-color: white;">
                         <div id="volcano" style="width: 50vw; height: 50vh; overflow: hidden; border-radius: 15px 0px 0px 15px;">
-                            <img src="../static/assets/images/volcanostages/gmaps.PNG" alt="" width="auto" height="100%">
+                            <img src="../static/assets/images/volcanostages/gmaps.PNG" alt="" width="auto" height="100%" style="margin-left: -30%;">
                         </div>
                         <div class="card">
                             <h4 class="date light-text secondary-text">OCTOBER 1789</h4>
@@ -72,26 +95,156 @@
     </section>
 
 
-    <section id="slide3" style="background-color: #bce5f9; height: 700vh; position: relative;">
-        <div id="trigger-volcano" style="top: 40vh; position: absolute;"></div>
+    <section id="slide3" style="background-color: #bce5f9; height: 600vh; position: relative;">
+        <div id="trigger-volcano" style="top: 50vh; position: absolute;"></div>
         <div id="triggerplates" style="top: 190vh; position: absolute;"></div>
         <div id="triggerlavafilling" style="top: 290vh; position: absolute;"></div>
+        <div id="triggerclouds" style="top: 400vh; position: absolute;"></div>
         <div class="slide3">
             <div class="img-container" style="position: relative; top: 40vh; z-index: 5;">
                 <img src="../static/assets/images/volcano2/lavafill.png" alt="" id="volcano-lava" style="position: absolute;   left: 50%;   height: 60vh; margin-top: 100%; transform: translateX(-50%);">
                 <img src="../static/assets/images/volcano2/plates.png" alt="" id="volcano-draw" style="position: absolute;   left: 50%;   transform: translateX(-50%); height: 60vh;">
                 <img src="../static/assets/images/volcano2/plate-left.png" alt="" id="plate-left" style="position: absolute;   left: 50%;   transform: translateX(-50%); height: 60vh;">
                 <img src="../static/assets/images/volcano2/plate-right.png" alt="" id="plate-right" style="position: absolute;   left: 50%;   transform: translateX(-50%); height: 60vh;">
-
+                <img src="../static/assets/images/volcano2/clouds1.png" alt="" id="clouds1" style="position: absolute;   left: 50%;   transform: translateX(-50%); height: 0vh; width: 3540px;">
             </div>
         </div>
-        
     </section>
 
+    
+
+    <section id="slide4" style="position: relative; background-color: #bce5f9; ">
+        <div class="div" id="clouds-anim" style="height: 300vh; position: relative;">
+            <div id="cardpin" style="top: 50vh; position: absolute;"></div>
+            <div class="section " id="section4slide1" style="height:300vh;">
+                <div class="el section-centered" style="height: 100vh;">
+                    <div class="fullcard center-fullcard" style="border-radius: 15px; background-color: white;">
+                        <div id="gif" style="width: 50vw; height: 50vh; overflow: hidden; border-radius: 15px 0px 0px 15px;">
+                            <img src="../static/assets/images/ashes.gif" alt="" width="auto" height="100%">
+                        </div>
+                        <div class="card">
+                            <h4 class="date light-text secondary-text">OCTOBER 1789</h4>
+                            <h1 class="title principal-text">Island</h1>
+                            <p class="infos principal-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum vel sapien vitae mauris elementum dapibus. Nunc viverra nibh id risus facilisis fringilla vitae a sapien. Ut eleifend fringilla sem at fermentum. Nulla posuere lectus vitae mi ullamcorper hendrerit. Sed sed rutrum nisi. Sed bibendum rhoncus eleifend. Nulla in eros tellus. Nunc est mauris, lobortis id eleifend laoreet, sollicitudin id lectus. Suspendisse sodales consequat eleifend.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="slide5" style="position: relative; height: 100vh; padding-top: 10vh;">
+        <h1 class="secondary-text centered">Resulting in...</h1>
+        <div class="centerer">
+            <div class="centered">
+                <ul>
+                    <li class="principal-text">
+                        700 citizens had to evacuate
+                    </li>
+                    <li class="principal-text">
+                        Millions of tourists were waiting in the airports
+                    </li>
+                    <li class="principal-text">
+                        The companies lost billions of dollars
+                    </li>
+                    <li class="principal-text">
+                        And mounts of journalists tried to pronounce <strong>Eyjafjallajökull</strong> 
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="randomvid" style="top: 50vh; left: 80vw;">
+            <video autoplay muted loop class="journal">
+                <source src="../static/assets/videos/journal/0.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="randomvid" style="top: 58vh; left: 10vw;">
+            <video autoplay muted loop class="journal">
+                <source src="../static/assets/videos/journal/1.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="randomvid" style="top: 85vh; left: 20vw;">
+            <video autoplay muted loop class="journal">
+                <source src="../static/assets/videos/journal/2.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="randomvid" style="top: 89vh; left: 84vw;">
+            <video autoplay muted loop class="journal">
+                <source src="../static/assets/videos/journal/3.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="randomvid" style="top: 25vh; left: 70vw;">
+            <video autoplay muted loop class="journal">
+                <source src="../static/assets/videos/journal/4.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="randomvid" style="top: 15vh; left: 10vw;">
+            <video autoplay muted loop class="journal">
+                <source src="../static/assets/videos/journal/5.mp4" type="video/mp4">
+            </video>
+        </div>
+    </section>
+
+
+    <footer style="height: 50vh;">
+        
+    </footer>
 
     <!-- <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init();
     </script> -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script>
+        $( document ).ready(function() {
+            $('.loader').css("display", "none");
+            console.log($(window).width())
+            if ($(window).width() >= 1000){
+                $('.warner').css('display', 'none')
+            }
+        });
+        $(document).ready(function(){
+            animateDiv();
+        });
+
+        function makeNewPosition(element){
+            
+            // Get viewport dimensions (remove the dimension of the div)
+            var top = element.css('top')
+            var left = element.css('left')
+            if(top == null) {
+                top = 0;
+                left = 0;
+            }
+            
+            var h = $(window).height() - 50;
+            var w = $(window).width() - 50;
+            
+            var nh = between(top-10, top+10);
+            var nw = between(left-10, left+10);
+            console.log(top + " " + left)
+            
+            return [nh,nw];    
+            
+        }
+
+        function between(min, max) {  
+            return Math.floor(
+                Math.random() * (max - min) + min
+            )
+        }
+
+        function animateDiv(){
+            var newq = makeNewPosition();
+            $('.randomvid').each(function() {
+                this.animate({ top: newq[0], left: newq[1] }, 5000, function(){
+                    animateDiv(this);        
+                });
+            });
+
+        };
+
+    </script>
 </body>
 </html>
