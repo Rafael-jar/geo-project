@@ -178,7 +178,7 @@ var settinginframe = TweenMax.to("#section1slide2 #earth canvas", 1, {
   onReverseComplete: function () {
     $("#section1slide2 .el .fullcard").removeClass("center-fullcard");
     $("#section1slide2 .el").removeClass("section-centered");
-    $("#section1slide2 #earth").css("width", "100vw");
+    $("#section1slide2 #earth").css("width", "100%");
     $("#section1slide2 #earth").css("height", "100vh");
     $("#section1slide2 #earth canvas").css("border-radius", "0px");
     $("#section1slide2 .el .fullcard").css("background-color", "transparent");
