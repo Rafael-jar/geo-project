@@ -8,7 +8,31 @@ import ScrollMagic from "scrollmagic";
 import { TweenMax, Linear, TimelineMax } from "gsap";
 import { ScrollMagicPluginGsap } from "scrollmagic-plugin-gsap";
 
+var playingaudio = false;
+
 var cycling = false;
+
+function play(audio) {
+  if (!playingaudio) {
+    playingaudio = true;
+
+    audio.play();
+    audio.addEventListener("ended", function () {
+      playingaudio = false;
+    });
+  } else {
+    var intervalId = window.setInterval(function () {
+      if (!playingaudio) {
+        playingaudio = true;
+        audio.play();
+        audio.addEventListener("ended", function () {
+          playingaudio = false;
+        });
+        clearInterval(intervalId);
+      }
+    }, 1000);
+  }
+}
 
 ScrollMagicPluginGsap(ScrollMagic, TweenMax, TimelineMax);
 
@@ -29,6 +53,10 @@ var scale_scene = new ScrollMagic.Scene({
 var slide2section1 = TweenMax.to("#section1slide2", 1, {
   ease: Linear.easeNone,
   opacity: 1,
+  onComplete: function () {
+    var audio = new Audio("./assets/audio/intro.mp3");
+    play(audio);
+  },
 });
 var controller = new ScrollMagic.Controller();
 
@@ -61,6 +89,7 @@ var webglEl = document.getElementById("earth");
 var radius = 0.5,
   segments = 32,
   rotation = 6;
+THREE.ImageUtils.crossOrigin = "anonymous";
 
 var scene = new THREE.Scene();
 
@@ -98,9 +127,7 @@ function createSphere(radius, segments) {
     new THREE.SphereGeometry(radius, segments, segments),
     new THREE.MeshPhongMaterial({
       map: THREE.ImageUtils.loadTexture("./assets/images/8081_earthmap10k.jpg"),
-      bumpMap: THREE.ImageUtils.loadTexture(
-        "../assets/images/elev_bump_4k.jpg"
-      ),
+      bumpMap: THREE.ImageUtils.loadTexture("./assets/images/elev_bump_4k.jpg"),
       bumpScale: 0.005,
       specularMap: THREE.ImageUtils.loadTexture("./assets/images/water_4k.png"),
       specular: new THREE.Color("grey"),
@@ -232,6 +259,14 @@ var volcano2Pin = new ScrollMagic.Scene({
   duration: "500%",
 })
   .setPin(".slide3")
+  .setTween(
+    new TweenMax.to("#trigger-volcano", 1, {
+      onStart: function () {
+        var audio = new Audio("./assets/audio/volc1.mp3");
+        play(audio);
+      },
+    })
+  )
   .addTo(controller);
 
 var volcanoplatemoove = new ScrollMagic.Scene({
@@ -240,6 +275,9 @@ var volcanoplatemoove = new ScrollMagic.Scene({
   .setTween(
     new TweenMax.to("#triggerplates", 1, {
       onStart: function () {
+        var audio = new Audio("./assets/audio/volc2.mp3");
+        play(audio);
+
         cycling = true;
         const interval = setInterval(function () {
           if (cycling) {
@@ -284,6 +322,14 @@ var volcanoplatemoove = new ScrollMagic.Scene({
   .setTween(
     new TweenMax.to("#volcano-lava", 2, {
       marginTop: "0%",
+      onStart: function () {
+        console.log("found1");
+        play(new Audio("./assets/audio/volc3.mp3"));
+      },
+      onComplete: function () {
+        console.log("found3");
+        play(new Audio("./assets/audio/volc4.mp3"));
+      },
     })
   )
   .addTo(controller);

@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Butterfly+Kids&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Oxygen:wght@300&display=swap");
 
 :root {
   --title: "Roboto", sans-serif;
@@ -71,12 +72,6 @@ strong {
 a {
   text-align: start;
 }
-
-a:hover {
-  color: var(--button-color);
-  text-decoration: none;
-}
-
 a.other:hover {
   color: var(--button-color);
   text-decoration: none;
@@ -170,4 +165,8 @@ a:not([href]):not([tabindex]) {
 
 .kidtest {
   font-family: "Kindergarten", sans-serif;
+}
+
+.oxygen {
+  font-family: "Oxygen", sans-serif;
 }
