@@ -209,3 +209,21 @@ ul {
     border-radius: 15px 15px 0px 0px !important;
   }
 }
+
+@media only screen and (max-width: 1700px) {
+  footer {
+    margin-top: 300px;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  footer {
+    margin-top: 600px;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  footer {
+    margin-top: 900px;
+  }
+}
